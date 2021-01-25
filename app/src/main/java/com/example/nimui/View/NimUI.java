@@ -11,7 +11,7 @@ import com.example.nimui.R;
 public class NimUI extends AppCompatActivity {
 
 
-
+//Test Comment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
