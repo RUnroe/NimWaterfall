@@ -10,13 +10,6 @@ import com.example.nimui.R;
 
 public class NimUI extends AppCompatActivity {
 
-
-//Test Comment
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
-    }
     //Setting up the UI to connect with the backend. Called raw due to it's type.
     TextView settingsDisplayRaw;
     TextView instructionsRaw;
@@ -36,7 +29,15 @@ public class NimUI extends AppCompatActivity {
 
     //Settings strings.
     String playerSettingsToggle = "";
-    String difficultyToggle= "";
+    String difficultyToggle = "";
+
+
+//Test Comment
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.settings);
+    }
 
 
     /**
@@ -63,12 +64,18 @@ public class NimUI extends AppCompatActivity {
      * @param v is just used to make the view do what's needed.
      */
     public void setPVP (View v){
-
+        settingsDisplayRaw = findViewById(R.id.txtViewSettings);
+        playerSettingsToggle = "Player V Player : ";
+        settingsDisplay = playerSettingsToggle + difficultyToggle;
+        settingsDisplayRaw.setText(settingsDisplay);
 
     }
 
     public void setPVC (View v){
-
+        settingsDisplayRaw = findViewById(R.id.txtViewSettings);
+        playerSettingsToggle = "Player V Computer: ";
+        settingsDisplay = playerSettingsToggle + difficultyToggle;
+        settingsDisplayRaw.setText(settingsDisplay);
 
     }
 
@@ -77,17 +84,26 @@ public class NimUI extends AppCompatActivity {
      * @param v is just used to make the view do what's needed.
      */
     public void setEasy (View v){
-
+        settingsDisplayRaw = findViewById(R.id.txtViewSettings);
+        difficultyToggle = "Easy Difficulty";
+        settingsDisplay = playerSettingsToggle + difficultyToggle;
+        settingsDisplayRaw.setText(settingsDisplay);
 
     }
 
     public void setMedium (View v){
-
+        settingsDisplayRaw = findViewById(R.id.txtViewSettings);
+        difficultyToggle = "Medium Difficulty";
+        settingsDisplay = playerSettingsToggle + difficultyToggle;
+        settingsDisplayRaw.setText(settingsDisplay);
 
     }
 
     public void setHard (View v){
-
+        settingsDisplayRaw = findViewById(R.id.txtViewSettings);
+        difficultyToggle = "Hard Difficulty";
+        settingsDisplay = playerSettingsToggle + difficultyToggle;
+        settingsDisplayRaw.setText(settingsDisplay);
 
     }
 
