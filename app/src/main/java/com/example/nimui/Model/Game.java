@@ -98,6 +98,8 @@ public class Game {
     public void resetGame() {
         selectedRow = -1;
         isPlayer1Turn = true;
+        isGamePlaying = true;
+        nimUI.changeActivePlayer(isPlayer1Turn);
         board = Arrays.copyOf(initBoardState, initBoardState.length);
         nimUI.updateGameBoard(board);
         nimUI.setOutput("The game has been reset!");

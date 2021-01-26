@@ -64,8 +64,10 @@ public class AI {
             }
         }
         //Nim sum can be greater than the amount in a row
-        amountToRemove = nimSum % highestAmountOnBoard;
+        amountToRemove = nimSum;
+        if(nimSum != highestAmountOnBoard) amountToRemove = nimSum % highestAmountOnBoard;
         //Return move to make
+        System.out.println(indexOfHighestAmount + ": -" + amountToRemove);
         return new int[] {indexOfHighestAmount, amountToRemove};
 
     }
@@ -84,10 +86,11 @@ public class AI {
         // To take from a row, it has to have at least one match in it.
         // This loop will keep running until it randomly selects a row with matches in it.
         do {
-            selectedRow = board[(int) Math.floor(Math.random() * (board.length - 1))];
-        } while(board[selectedRow] != 0);
+            selectedRow = board[(int) Math.floor(Math.random() * (board.length))];
+        } while(board[selectedRow] == 0);
 
         //Return move to make
+        System.out.println(selectedRow + ": -" + amountToRemove);
         return new int[] {selectedRow, amountToRemove};
     }
 

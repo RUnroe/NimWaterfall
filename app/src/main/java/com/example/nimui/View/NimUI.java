@@ -16,20 +16,9 @@ public class NimUI extends AppCompatActivity {
 
     //Setting up the UI to connect with the backend. Called raw due to it's type.
     TextView settingsDisplayRaw;
-    TextView instructionsRaw;
-    TextView playerOneScoreRaw;
-    TextView playerTwoScoreRaw;
-    TextView outputGameRaw;
 
     //Changing the EditText contents and turning them to String to display new information, at least these will be used to do so.
     String settingsDisplay;
-    String instructions;
-    String playerOneScore;
-    String playerTwoScore;
-    String outputGame;
-
-    //Error possibly when they try to start the game without pressing any buttons.
-    String error = "You cannot continue until you select the settings for your game.";
 
     //Settings strings.
     String playerSettingsToggle = "Player V Player : ";
@@ -189,6 +178,7 @@ public class NimUI extends AppCompatActivity {
     public void changeActivePlayer(boolean isNowPlayer1Turn) {
         TextView player1Text = findViewById(R.id.txtPlayerOneScore);
         TextView player2Text = findViewById(R.id.txtPlayerTwoScore);
+        //Make player 1 name bold and black. Make player 2 name gray and regular font weight
         if(isNowPlayer1Turn) {
             player1Text.setTextColor(0xFF000000);
             player1Text.setTypeface(Typeface.DEFAULT_BOLD);
@@ -196,6 +186,7 @@ public class NimUI extends AppCompatActivity {
             player2Text.setTypeface(Typeface.DEFAULT);
 
         }
+        //Make player 2 name bold and black. Make player 1 name gray and regular font weight
         else {
             player1Text.setTextColor(0xFF666666);
             player1Text.setTypeface(Typeface.DEFAULT);
