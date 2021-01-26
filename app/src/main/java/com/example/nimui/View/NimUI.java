@@ -145,40 +145,64 @@ public class NimUI extends AppCompatActivity {
     }
 
     /**
-     * Buttons meant to restart games, end turns and exit the game entirely.
+     * This button allows the user to exit the game when they wish.
      * @param v is just used to make the view do what's needed.
      */
     public void exitGame (View v){
 
         this.finishAffinity();
     }
-
+    /**
+     * This button allows the user to restart the game. This button is only available from the game
+     * activity.
+     * @param v is just used to make the view do what's needed.
+     */
     public void restartGame (View v){
         nim.getGame().resetGame();
 
     }
 
+    /**
+     * This button allows the user to end their turn if they have met the requirements.
+     * @param v is just used to make the view do what's needed.
+     */
     public void endTurn (View v){
         nim.getGame().endTurn();
 
     }
 
     /**
-     * Row buttons meant to work as functioning match sticks. May make the other's none clickable when one row already is pressed.
+     * Button on click for the first row of matches. Clicking on the button will remove a single
+     * match from this row.
      * @param v is just used to make the view do what's needed.
      */
     public void rowOne (View v){
         removeFromRow(0);
     }
 
+    /**
+     * Button on click for the second row of matches. Clicking on the button will remove a single
+     * match from this row.
+     * @param v is just used to make the view do what's needed.
+     */
     public void rowTwo (View v){
         removeFromRow(1);
     }
 
+    /**
+     * Button on click for the third row of matches. Clicking on the button will remove a single
+     * match from this row.
+     * @param v is just used to make the view do what's needed.
+     */
     public void rowThree (View v){
         removeFromRow(2);
     }
 
+    /**
+     * Button on click for the fourth row of matches. Clicking on the button will remove a single
+     * match from this row.
+     * @param v is just used to make the view do what's needed.
+     */
     public void rowFour (View v){
         removeFromRow(3);
     }
