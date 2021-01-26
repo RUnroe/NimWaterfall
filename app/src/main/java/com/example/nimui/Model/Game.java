@@ -38,8 +38,11 @@ public class Game {
     }
 
     public boolean aiTurn() {
-        int[] aiMove = ai.determineMove(board);
-        removeMatchesFromRow(aiMove[0], aiMove[1]);
+        int[] aiMove;
+        do {
+            aiMove = ai.determineMove(board);
+
+        } while(!removeMatchesFromRow(aiMove[0], aiMove[1]));
         endTurn();
         nimUI.updateGameBoard(board);
         return true;
@@ -49,6 +52,9 @@ public class Game {
         return (row >= 0 && row < board.length && amount <= board[row] && amount > 0);
     }
 
+    public void playerRemoveMatchesFromRow(int row, int amount) {
+        if (!(!isPlayer1Turn && player2IsAI)) removeMatchesFromRow(row, amount);
+    }
     public boolean removeMatchesFromRow(int row, int amount) {
         if(isMoveValid(row, amount)) {
             if(selectedRow == -1) selectedRow = row;

@@ -49,13 +49,19 @@ public class NimUI extends AppCompatActivity {
     }
 
     public void goToInstructions (View v){
-
         setContentView(R.layout.intructions);
+
     }
 
     public void goToSettings (View v){
-
         setContentView(R.layout.settings);
+
+        //Set default settings
+        playerSettingsToggle = "Player V Player : ";
+        difficultyToggle = "Easy Difficulty";
+        nim.setDifficulty(Difficulty.EASY);
+        nim.setSecondPlayerComputer(false);
+        ((TextView) findViewById(R.id.txtViewSettings)).setText(playerSettingsToggle + difficultyToggle);
     }
 
     /**
@@ -131,26 +137,26 @@ public class NimUI extends AppCompatActivity {
      * @param v is just used to make the view do what's needed.
      */
     public void rowOne (View v){
-        nim.getGame().removeMatchesFromRow(0, 1);
-        updateGameBoard(nim.getGame().getBoard());
+        removeFromRow(0);
     }
 
     public void rowTwo (View v){
-        nim.getGame().removeMatchesFromRow(1, 1);
-        updateGameBoard(nim.getGame().getBoard());
-
+        removeFromRow(1);
     }
 
     public void rowThree (View v){
-        nim.getGame().removeMatchesFromRow(2, 1);
-        updateGameBoard(nim.getGame().getBoard());
+        removeFromRow(2);
 
     }
 
     public void rowFour (View v){
-        nim.getGame().removeMatchesFromRow(3, 1);
-        updateGameBoard(nim.getGame().getBoard());
+        removeFromRow(3);
 
+    }
+
+    private void removeFromRow(int row) {
+        nim.getGame().playerRemoveMatchesFromRow(row, 1);
+        updateGameBoard(nim.getGame().getBoard());
     }
 
 

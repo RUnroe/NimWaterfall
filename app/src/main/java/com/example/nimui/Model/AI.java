@@ -23,6 +23,7 @@ public class AI {
             }
         }
         else {
+            System.out.println("Special " + specialCaseMove[0] + ": s- " + specialCaseMove[1]);
             return specialCaseMove;
         }
     }
@@ -90,7 +91,7 @@ public class AI {
         } while(board[selectedRow] == 0);
 
         //Return move to make
-        System.out.println(selectedRow + ": -" + amountToRemove);
+        System.out.println(selectedRow + ": r-" + amountToRemove);
         return new int[] {selectedRow, amountToRemove};
     }
 
