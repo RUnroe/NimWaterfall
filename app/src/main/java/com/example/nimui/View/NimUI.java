@@ -31,8 +31,8 @@ public class NimUI extends AppCompatActivity {
     String error = "You cannot continue until you select the settings for your game.";
 
     //Settings strings.
-    String playerSettingsToggle = "";
-    String difficultyToggle = "";
+    String playerSettingsToggle = "Player V Player : ";
+    String difficultyToggle = "Easy Difficulty";
 
 
     private Nim nim = new Nim(this);
@@ -41,6 +41,7 @@ public class NimUI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        ((TextView) findViewById(R.id.txtViewSettings)).setText(playerSettingsToggle + difficultyToggle);
     }
 
 
@@ -175,10 +176,10 @@ public class NimUI extends AppCompatActivity {
     public void setOutput(String text) {
         ((TextView) findViewById(R.id.txtGameOutPut)).setText(text);
     }
-    public void updateScores(int player1Score, int player2Score) {
-        ((TextView) findViewById(R.id.txtPlayerTwoScore)).setText("Player 1 - " + playerOneScore);
+    public void updateScores(int playerOneScore, int playerTwoScore) {
+        ((TextView) findViewById(R.id.txtPlayerOneScore)).setText("Player One: " + playerOneScore);
 
-        String secondPlayerScoreText = nim.isSecondPlayerComputer() ? "Computer - " : "Player 2 - ";
+        String secondPlayerScoreText = nim.isSecondPlayerComputer() ? "Computer - " : "Player Two: ";
         ((TextView) findViewById(R.id.txtPlayerTwoScore)).setText(secondPlayerScoreText + playerTwoScore);
     }
 

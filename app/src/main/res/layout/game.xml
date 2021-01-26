@@ -115,7 +115,7 @@
         android:layout_width="183dp"
         android:layout_height="31dp"
         android:gravity="center|left"
-        android:text="Player One - Score"
+        android:text="Player One"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

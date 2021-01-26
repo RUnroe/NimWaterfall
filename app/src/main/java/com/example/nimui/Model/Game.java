@@ -10,9 +10,13 @@ public class Game {
 
     public Game(NimUI nimUI, int[] initBoardState, boolean player2IsAI) {
         this.nimUI = nimUI;
+        //Save original board state
         this.initBoardState = initBoardState;
+        //Make copy of board state for game play
         this.board = Arrays.copyOf(initBoardState, initBoardState.length);
         this.player2IsAI = player2IsAI;
+        //Set the first output text to who's turn it is
+        nimUI.setOutput("It is now player " + (isPlayer1Turn ? "TWO" : "ONE") + "'s turn");
     }
 
     private NimUI nimUI;
@@ -81,13 +85,16 @@ public class Game {
                 nimUI.setOutput("Player 1 won!");
                 player1Score++;
             } else {
+                nimUI.setOutput(player2IsAI? "Computer won!" : "Player 2 won!");
                 player2Score++;
             }
+            nimUI.updateScores(player1Score, player2Score);
         }
         return win;
     }
 
     public void resetGame() {
+        selectedRow = -1;
         isPlayer1Turn = true;
         board = Arrays.copyOf(initBoardState, initBoardState.length);
         nimUI.updateGameBoard(board);
