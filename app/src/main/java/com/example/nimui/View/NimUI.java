@@ -37,7 +37,8 @@ public class NimUI extends AppCompatActivity {
 
 
     /**
-     * Buttons used to get back and forth between pages, between Game, Instructions, and Settings; which you start on.
+     * Button used to get back and forth between pages, between Game, Instructions, and Settings; which you start on.
+     * goToGame specifically goes to the game page and sets the actual board up behind the GUI.
      * @param v is just used to make the view do what's needed.
      */
     public void goToGame (View v){
@@ -49,10 +50,22 @@ public class NimUI extends AppCompatActivity {
 
     }
 
+    /**
+     * Buttons used to get back and forth between pages, between Game, Instructions, and Settings; which you start on.
+     * goToInstructions takes the user to the instructions page and shows instructions.
+     * @param v is just used to make the view do what's needed.
+     */
+
     public void goToInstructions (View v){
         setContentView(R.layout.intructions);
 
     }
+
+    /**
+     * Buttons used to get back and forth between pages, between Game, Instructions, and Settings; which you start on.
+     * goToSettings takes you back to settings and sets the default settings to PvP and Easy.
+     * @param v is just used to make the view do what's needed.
+     */
 
     public void goToSettings (View v){
         setContentView(R.layout.settings);
@@ -66,7 +79,8 @@ public class NimUI extends AppCompatActivity {
     }
 
     /**
-     * PVP and PVC buttons used to set Player Two(Either a computer or an actual player.
+     * PVP and PVC buttons used to set Player Two(Either a computer or an actual player).
+     * setPVP turns the game to player vs player and disables the AI making moves.
      * @param v is just used to make the view do what's needed.
      */
     public void setPVP (View v){
@@ -77,6 +91,11 @@ public class NimUI extends AppCompatActivity {
         nim.setSecondPlayerComputer(false);
     }
 
+    /**
+     * PVP and PVC buttons used to set Player Two(Either a computer or an actual player).
+     * setPVC turns the game to player vs computer and enables AI when the game starts.
+     * @param v is just used to make the view do what's needed.
+     */
     public void setPVC (View v){
         settingsDisplayRaw = findViewById(R.id.txtViewSettings);
         playerSettingsToggle = "Player V Computer: ";
@@ -87,6 +106,7 @@ public class NimUI extends AppCompatActivity {
 
     /**
      * Difficulty buttons meant to change the playing board of the game.
+     * setEasy turns the board to the easy one.
      * @param v is just used to make the view do what's needed.
      */
     public void setEasy (View v){
@@ -97,6 +117,11 @@ public class NimUI extends AppCompatActivity {
         nim.setDifficulty(Difficulty.EASY);
     }
 
+    /**
+     * Difficulty buttons meant to change the playing board of the game.
+     * setMedium turns the board to the medium one.
+     * @param v is just used to make the view do what's needed.
+     */
     public void setMedium (View v){
         settingsDisplayRaw = findViewById(R.id.txtViewSettings);
         difficultyToggle = "Medium Difficulty";
@@ -106,6 +131,11 @@ public class NimUI extends AppCompatActivity {
 
     }
 
+    /**
+     * Difficulty buttons meant to change the playing board of the game.
+     * setHard turns the board to the hard one.
+     * @param v is just used to make the view do what's needed.
+     */
     public void setHard (View v){
         settingsDisplayRaw = findViewById(R.id.txtViewSettings);
         difficultyToggle = "Hard Difficulty";
