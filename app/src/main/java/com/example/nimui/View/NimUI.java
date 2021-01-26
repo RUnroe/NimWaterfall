@@ -203,7 +203,7 @@ public class NimUI extends AppCompatActivity {
     }
 
     /**
-     * Changes the visual represntation of which player is currently active. The active player will
+     * Changes the visual representation of which player is currently active. The active player will
      * have their name in bold, black text.
      * @param isNowPlayer1Turn boolean value to determine which player's turn is is.
      */

@@ -22,10 +22,11 @@
 
     <TextView
         android:id="@+id/txtInstructions"
-        android:layout_width="427dp"
+        android:layout_width="0dp"
         android:layout_height="186dp"
         android:gravity="center"
         android:hint="Placeholder"
+        android:text="To play Nim, players take turns removing matches — each player may remove any number of matches (at least one) from any one row, and it is fine to take a whole row — whichever player takes the last match wins."
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
