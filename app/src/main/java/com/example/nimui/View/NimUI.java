@@ -2,6 +2,7 @@ package com.example.nimui.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -183,4 +184,21 @@ public class NimUI extends AppCompatActivity {
         ((TextView) findViewById(R.id.txtPlayerTwoScore)).setText(secondPlayerScoreText + playerTwoScore);
     }
 
+    public void changeActivePlayer(boolean isNowPlayer1Turn) {
+        TextView player1Text = findViewById(R.id.txtPlayerOneScore);
+        TextView player2Text = findViewById(R.id.txtPlayerTwoScore);
+        if(isNowPlayer1Turn) {
+            player1Text.setTextColor(0xFF000000);
+            player1Text.setTypeface(Typeface.DEFAULT_BOLD);
+            player2Text.setTextColor(0xFF666666);
+            player2Text.setTypeface(Typeface.DEFAULT);
+
+        }
+        else {
+            player1Text.setTextColor(0xFF666666);
+            player1Text.setTypeface(Typeface.DEFAULT);
+            player2Text.setTextColor(0xFF000000);
+            player2Text.setTypeface(Typeface.DEFAULT_BOLD);
+        }
+    }
 }

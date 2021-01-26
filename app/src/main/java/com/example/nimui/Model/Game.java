@@ -15,8 +15,9 @@ public class Game {
         //Make copy of board state for game play
         this.board = Arrays.copyOf(initBoardState, initBoardState.length);
         this.player2IsAI = player2IsAI;
+        this.isPlayer1Turn = true;
         //Set the first output text to who's turn it is
-        nimUI.setOutput("It is now player " + (isPlayer1Turn ? "TWO" : "ONE") + "'s turn");
+        //nimUI.setOutput("It is now player " + (isPlayer1Turn ? "TWO" : "ONE") + "'s turn");
     }
 
     private NimUI nimUI;
@@ -66,6 +67,7 @@ public class Game {
         if(!checkForWin() && selectedRow != -1) {
             nimUI.setOutput("It is now player " + (isPlayer1Turn ? "TWO" : "ONE") + "'s turn");
             isPlayer1Turn = !isPlayer1Turn;
+            nimUI.changeActivePlayer(isPlayer1Turn);
             selectedRow = -1;
             if(!isPlayer1Turn && player2IsAI) aiTurn();
         }
