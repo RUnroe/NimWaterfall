@@ -10,6 +10,7 @@ import com.example.nimui.View.NimUI;
 
 public class Nim {
 
+
     private boolean isSecondPlayerComputer = false;
     private Difficulty difficulty = Difficulty.EASY;
     private Game game;
@@ -20,6 +21,9 @@ public class Nim {
     }
 
 
+    public boolean isSecondPlayerComputer() {
+        return isSecondPlayerComputer;
+    }
     public void setSecondPlayerComputer(boolean secondPlayerComputer) {
         isSecondPlayerComputer = secondPlayerComputer;
     }

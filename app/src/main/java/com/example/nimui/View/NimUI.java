@@ -52,6 +52,7 @@ public class NimUI extends AppCompatActivity {
         nim.createGame();
         setContentView(R.layout.game);
         updateGameBoard(nim.getGame().getBoard());
+        updateScores(0,0);
     }
 
     public void goToInstructions (View v){
@@ -169,6 +170,16 @@ public class NimUI extends AppCompatActivity {
             int temp = getResources().getIdentifier("btnRow" + i, "id", getPackageName());
             ((Button) findViewById(temp)).setText(matches);
         }
+    }
+
+    public void setOutput(String text) {
+        ((TextView) findViewById(R.id.txtGameOutPut)).setText(text);
+    }
+    public void updateScores(int player1Score, int player2Score) {
+        ((TextView) findViewById(R.id.txtPlayerTwoScore)).setText("Player 1 - " + playerOneScore);
+
+        String secondPlayerScoreText = nim.isSecondPlayerComputer() ? "Computer - " : "Player 2 - ";
+        ((TextView) findViewById(R.id.txtPlayerTwoScore)).setText(secondPlayerScoreText + playerTwoScore);
     }
 
 }

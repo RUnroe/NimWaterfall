@@ -54,15 +54,18 @@ public class Game {
                 return true;
             }
         }
+        nimUI.setOutput("Invalid move!");
         return false;
     }
 
     public void endTurn() {
         if(!checkForWin() && selectedRow != -1) {
+            nimUI.setOutput("It is now player " + (isPlayer1Turn ? "TWO" : "ONE") + "'s turn");
             isPlayer1Turn = !isPlayer1Turn;
             selectedRow = -1;
+            if(!isPlayer1Turn && player2IsAI) aiTurn();
         }
-        if(!isPlayer1Turn && player2IsAI) aiTurn();
+
     }
 
     private boolean checkForWin() {
@@ -75,6 +78,7 @@ public class Game {
         win = (count == board.length);
         if(win) {
             if(!isPlayer1Turn) {
+                nimUI.setOutput("Player 1 won!");
                 player1Score++;
             } else {
                 player2Score++;
@@ -87,6 +91,7 @@ public class Game {
         isPlayer1Turn = true;
         board = Arrays.copyOf(initBoardState, initBoardState.length);
         nimUI.updateGameBoard(board);
+        nimUI.setOutput("The game has been reset!");
     }
 
 }
