@@ -15,9 +15,7 @@ public class Game {
         //Make copy of board state for game play
         this.board = Arrays.copyOf(initBoardState, initBoardState.length);
         this.player2IsAI = player2IsAI;
-        this.isPlayer1Turn = true;
         //Set the first output text to who's turn it is
-        //nimUI.setOutput("It is now player " + (isPlayer1Turn ? "TWO" : "ONE") + "'s turn");
     }
 
     private NimUI nimUI;
@@ -31,6 +29,7 @@ public class Game {
 
     private AI ai = new AI();
 
+    private boolean isGamePlaying = true;
     private boolean isPlayer1Turn = true;
 
 
@@ -82,7 +81,8 @@ public class Game {
             if(board[i] == 0) count++;
         }
         win = (count == board.length);
-        if(win) {
+        if(win && isGamePlaying) {
+            isGamePlaying = false;
             if(!isPlayer1Turn) {
                 nimUI.setOutput("Player 1 won!");
                 player1Score++;

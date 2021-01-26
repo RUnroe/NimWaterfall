@@ -55,6 +55,8 @@ public class NimUI extends AppCompatActivity {
         setContentView(R.layout.game);
         updateGameBoard(nim.getGame().getBoard());
         updateScores(0,0);
+        setOutput("It is now player ONE's turn");
+
     }
 
     public void goToInstructions (View v){
@@ -180,7 +182,7 @@ public class NimUI extends AppCompatActivity {
     public void updateScores(int playerOneScore, int playerTwoScore) {
         ((TextView) findViewById(R.id.txtPlayerOneScore)).setText("Player One: " + playerOneScore);
 
-        String secondPlayerScoreText = nim.isSecondPlayerComputer() ? "Computer - " : "Player Two: ";
+        String secondPlayerScoreText = nim.isSecondPlayerComputer() ? "Computer: " : "Player Two: ";
         ((TextView) findViewById(R.id.txtPlayerTwoScore)).setText(secondPlayerScoreText + playerTwoScore);
     }
 
