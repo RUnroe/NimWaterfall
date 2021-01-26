@@ -31,6 +31,7 @@ public class NimUI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        //set initial settings text
         ((TextView) findViewById(R.id.txtViewSettings)).setText(playerSettingsToggle + difficultyToggle);
     }
 
@@ -154,26 +155,46 @@ public class NimUI extends AppCompatActivity {
 
     }
 
+    /**
+     * Takes in row and removes one match from that row. Then updates the game board on the UI.
+     * @param row the index of the board array to remove matches from
+     */
     private void removeFromRow(int row) {
         nim.getGame().playerRemoveMatchesFromRow(row, 1);
         updateGameBoard(nim.getGame().getBoard());
     }
 
-
+    /**
+     * Updates the visual representation of the game board.
+     * @param board current state of the game board
+     */
     public void updateGameBoard(int[] board) {
+        //loop through board and create "matches" for each row
         for(int i = 0; i < board.length; i++) {
             String matches = "";
             for(int j = 0; j < board[i]; j++) {
                 matches +=" |";
             }
+            //Sets the text of the correct button/row based on index i in the for loop
             int temp = getResources().getIdentifier("btnRow" + i, "id", getPackageName());
             ((Button) findViewById(temp)).setText(matches);
         }
     }
 
+    /**
+     * Sets the text of the output TextView.
+     * @param text string to be displayed on the output TextView.
+     */
     public void setOutput(String text) {
         ((TextView) findViewById(R.id.txtGameOutPut)).setText(text);
     }
+
+    /**
+     * Updates the score display of the players. Uses different names for player two based on
+     * whether it is an ai or a user.
+     * @param playerOneScore integer value of player one's current score
+     * @param playerTwoScore integer value of player two's current score
+     */
     public void updateScores(int playerOneScore, int playerTwoScore) {
         ((TextView) findViewById(R.id.txtPlayerOneScore)).setText("Player One: " + playerOneScore);
 
@@ -181,6 +202,11 @@ public class NimUI extends AppCompatActivity {
         ((TextView) findViewById(R.id.txtPlayerTwoScore)).setText(secondPlayerScoreText + playerTwoScore);
     }
 
+    /**
+     * Changes the visual represntation of which player is currently active. The active player will
+     * have their name in bold, black text.
+     * @param isNowPlayer1Turn boolean value to determine which player's turn is is.
+     */
     public void changeActivePlayer(boolean isNowPlayer1Turn) {
         TextView player1Text = findViewById(R.id.txtPlayerOneScore);
         TextView player2Text = findViewById(R.id.txtPlayerTwoScore);
