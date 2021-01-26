@@ -1,13 +1,11 @@
 package com.example.nimui.Controller;
 
 
-import com.example.nimui.Model.Game;
+import android.renderscript.ScriptIntrinsicYuvToRGB;
 
-enum Difficulty {
-    EASY,
-    MEDIUM,
-    HARD
-}
+import com.example.nimui.Model.Difficulty;
+import com.example.nimui.Model.Game;
+import com.example.nimui.View.NimUI;
 
 
 public class Nim {
@@ -15,8 +13,19 @@ public class Nim {
     private boolean isSecondPlayerComputer = false;
     private Difficulty difficulty = Difficulty.EASY;
     private Game game;
+    private NimUI nimUI;
+
+    public Nim(NimUI nimUI) {
+        this.nimUI = nimUI;
+    }
 
 
+    public void setSecondPlayerComputer(boolean secondPlayerComputer) {
+        isSecondPlayerComputer = secondPlayerComputer;
+    }
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
     /**
      * Takes in the selected difficulty and returns the initial board state for the respective difficulty.
      * @param difficulty difficulty chosen by player through gui
@@ -39,16 +48,13 @@ public class Nim {
     /**
      *
      */
-    public void playGame() {
-        //game = new Game(getDifficulty(difficulty), isSecondPlayerComputer );
+    public void createGame() {
+        game = new Game(nimUI, getDifficulty(difficulty), isSecondPlayerComputer );
     }
 
 
-    /**
-     *
-     */
-    public void newGame() {
-
-    }
+   public Game getGame() {
+        return this.game;
+   }
 }
 

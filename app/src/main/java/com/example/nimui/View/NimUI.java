@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.nimui.Controller.Nim;
+import com.example.nimui.Model.Difficulty;
 import com.example.nimui.R;
 
 public class NimUI extends AppCompatActivity {
@@ -32,7 +35,8 @@ public class NimUI extends AppCompatActivity {
     String difficultyToggle = "";
 
 
-//Test Comment
+    private Nim nim = new Nim(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +49,9 @@ public class NimUI extends AppCompatActivity {
      * @param v is just used to make the view do what's needed.
      */
     public void goToGame (View v){
-
+        nim.createGame();
         setContentView(R.layout.game);
+        updateGameBoard(nim.getGame().getBoard());
     }
 
     public void goToInstructions (View v){
@@ -68,7 +73,7 @@ public class NimUI extends AppCompatActivity {
         playerSettingsToggle = "Player V Player : ";
         settingsDisplay = playerSettingsToggle + difficultyToggle;
         settingsDisplayRaw.setText(settingsDisplay);
-
+        nim.setSecondPlayerComputer(false);
     }
 
     public void setPVC (View v){
@@ -76,7 +81,7 @@ public class NimUI extends AppCompatActivity {
         playerSettingsToggle = "Player V Computer: ";
         settingsDisplay = playerSettingsToggle + difficultyToggle;
         settingsDisplayRaw.setText(settingsDisplay);
-
+        nim.setSecondPlayerComputer(true);
     }
 
     /**
@@ -88,7 +93,7 @@ public class NimUI extends AppCompatActivity {
         difficultyToggle = "Easy Difficulty";
         settingsDisplay = playerSettingsToggle + difficultyToggle;
         settingsDisplayRaw.setText(settingsDisplay);
-
+        nim.setDifficulty(Difficulty.EASY);
     }
 
     public void setMedium (View v){
@@ -96,6 +101,7 @@ public class NimUI extends AppCompatActivity {
         difficultyToggle = "Medium Difficulty";
         settingsDisplay = playerSettingsToggle + difficultyToggle;
         settingsDisplayRaw.setText(settingsDisplay);
+        nim.setDifficulty(Difficulty.MEDIUM);
 
     }
 
@@ -104,7 +110,7 @@ public class NimUI extends AppCompatActivity {
         difficultyToggle = "Hard Difficulty";
         settingsDisplay = playerSettingsToggle + difficultyToggle;
         settingsDisplayRaw.setText(settingsDisplay);
-
+        nim.setDifficulty(Difficulty.HARD);
     }
 
     /**
@@ -117,12 +123,12 @@ public class NimUI extends AppCompatActivity {
     }
 
     public void restartGame (View v){
-
+        nim.getGame().resetGame();
 
     }
 
     public void endTurn (View v){
-
+        nim.getGame().endTurn();
 
     }
 
@@ -131,22 +137,38 @@ public class NimUI extends AppCompatActivity {
      * @param v is just used to make the view do what's needed.
      */
     public void rowOne (View v){
-
-
+        nim.getGame().removeMatchesFromRow(0, 1);
+        updateGameBoard(nim.getGame().getBoard());
     }
 
     public void rowTwo (View v){
-
+        nim.getGame().removeMatchesFromRow(1, 1);
+        updateGameBoard(nim.getGame().getBoard());
 
     }
 
     public void rowThree (View v){
-
+        nim.getGame().removeMatchesFromRow(2, 1);
+        updateGameBoard(nim.getGame().getBoard());
 
     }
 
     public void rowFour (View v){
-
+        nim.getGame().removeMatchesFromRow(3, 1);
+        updateGameBoard(nim.getGame().getBoard());
 
     }
+
+
+    public void updateGameBoard(int[] board) {
+        for(int i = 0; i < board.length; i++) {
+            String matches = "";
+            for(int j = 0; j < board[i]; j++) {
+                matches +=" |";
+            }
+            int temp = getResources().getIdentifier("btnRow" + i, "id", getPackageName());
+            ((Button) findViewById(temp)).setText(matches);
+        }
+    }
+
 }

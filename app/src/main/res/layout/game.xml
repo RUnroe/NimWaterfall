@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.956" />
 
     <Button
-        android:id="@+id/btnRowFour"
+        android:id="@+id/btnRow3"
         android:layout_width="448dp"
         android:layout_height="41dp"
         android:onClick="rowFour"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.643" />
 
     <Button
-        android:id="@+id/btnRowThree"
+        android:id="@+id/btnRow2"
         android:layout_width="448dp"
         android:layout_height="41dp"
         android:onClick="rowThree"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.532" />
 
     <Button
-        android:id="@+id/btnRowTwo"
+        android:id="@+id/btnRow1"
         android:layout_width="448dp"
         android:layout_height="41dp"
         android:onClick="rowTwo"
@@ -125,7 +125,7 @@
         app:layout_constraintVertical_bias="0.04" />
 
     <Button
-        android:id="@+id/btnRowOne"
+        android:id="@+id/btnRow0"
         android:layout_width="448dp"
         android:layout_height="41dp"
         android:onClick="rowOne"

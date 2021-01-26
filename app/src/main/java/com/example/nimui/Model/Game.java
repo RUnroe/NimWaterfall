@@ -1,19 +1,24 @@
 package com.example.nimui.Model;
 
 
+import com.example.nimui.Controller.Nim;
+import com.example.nimui.View.NimUI;
+
 import java.util.Arrays;
 
 public class Game {
 
-    public Game(int[] initBoardState, boolean player2IsAI) {
-        this.board = initBoardState;
+    public Game(NimUI nimUI, int[] initBoardState, boolean player2IsAI) {
+        this.nimUI = nimUI;
         this.initBoardState = initBoardState;
+        this.board = Arrays.copyOf(initBoardState, initBoardState.length);
         this.player2IsAI = player2IsAI;
     }
 
+    private NimUI nimUI;
     private int[] initBoardState;
     private int[] board;
-    private int selectedRow;
+    private int selectedRow = -1;
     private boolean player2IsAI;
 
     private int player1Score = 0;
@@ -23,32 +28,31 @@ public class Game {
 
     private boolean isPlayer1Turn = true;
 
+
+    public int[] getBoard() {
+        return board;
+    }
+
     public boolean aiTurn() {
-        boolean valid = false;
-        do {
-            int[] aiMove = ai.determineMove(board);
-            valid = isMoveValid(aiMove[0], aiMove[1]);
-        } while(!valid);
-        return valid;
+        int[] aiMove = ai.determineMove(board);
+        removeMatchesFromRow(aiMove[0], aiMove[1]);
+        endTurn();
+        nimUI.updateGameBoard(board);
+        return true;
     }
 
     private boolean isMoveValid(int row, int amount) {
-        boolean valid = false;
-
-        if(row >= 0 && row < board.length && amount <= board[row] && amount > 0) {
-            do {
-                valid = removeMatchesFromRow(row, amount);
-            } while(!valid);
-        }
-        return valid;
+        return (row >= 0 && row < board.length && amount <= board[row] && amount > 0);
     }
 
     public boolean removeMatchesFromRow(int row, int amount) {
-        if(selectedRow == -1) selectedRow = row;
-        if(selectedRow == row) {
-            board[row] = board[row] - amount;
-            checkForWin();
-            return true;
+        if(isMoveValid(row, amount)) {
+            if(selectedRow == -1) selectedRow = row;
+            if(row == selectedRow) {
+                board[row] = board[row] - amount;
+                checkForWin();
+                return true;
+            }
         }
         return false;
     }
@@ -70,7 +74,7 @@ public class Game {
         }
         win = (count == board.length);
         if(win) {
-            if(isPlayer1Turn) {
+            if(!isPlayer1Turn) {
                 player1Score++;
             } else {
                 player2Score++;
@@ -82,6 +86,7 @@ public class Game {
     public void resetGame() {
         isPlayer1Turn = true;
         board = Arrays.copyOf(initBoardState, initBoardState.length);
+        nimUI.updateGameBoard(board);
     }
 
 }
