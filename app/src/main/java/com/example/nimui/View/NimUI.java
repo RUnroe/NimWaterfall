@@ -147,12 +147,10 @@ public class NimUI extends AppCompatActivity {
 
     public void rowThree (View v){
         removeFromRow(2);
-
     }
 
     public void rowFour (View v){
         removeFromRow(3);
-
     }
 
     /**

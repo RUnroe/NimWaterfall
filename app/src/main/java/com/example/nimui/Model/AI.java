@@ -29,7 +29,7 @@ public class AI {
 
     /**
      * A method to find the nim sum of the current board state. The nim sum is found by performing XOR on all of the
-     * values on the game board. The resulting number is known as the num sum.
+     * values on the game board. The resulting number is known as the nim sum.
      * @param board the current state of the board in an int array. Index is the row and value is the amount of matches
      *             in that row
      * @return nim sum
